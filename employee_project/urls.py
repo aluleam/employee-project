@@ -4,10 +4,11 @@ from rest_framework import routers
 from employees import views as emp_views
 from attendance import views as att_views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
+from django.views.generic import RedirectView
+from django.contrib.auth.decorators import login_required
 
 router = routers.DefaultRouter()
 router.register(r'departments', emp_views.DepartmentViewSet)
@@ -37,6 +38,9 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('charts/', emp_views.chart_page, name='charts'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+
+    path('swagger/', login_required(schema_view.with_ui('swagger', cache_timeout=0)), name='schema-swagger-ui'),
+    path('redoc/', login_required(schema_view.with_ui('redoc', cache_timeout=0)), name='schema-redoc'),
+
+    path('', RedirectView.as_view(url='/swagger/', permanent=False)),
 ]
