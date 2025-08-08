@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Attendance, Performance  # models belonging to attendance app
+from .models import Attendance, Performance
 
 # Register Attendance model
 @admin.register(Attendance)

@@ -13,7 +13,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
     filterset_fields = {
         'employee': ['exact'],
         'employee__department': ['exact'],  # filter by department
-        'employee__date_joined': ['exact', 'gte', 'lte'],  # filter by date_joined with ranges
+        'employee__date_joined': ['exact', 'gte', 'lte'],
         'date': ['exact', 'gte', 'lte'],   # filter by attendance date
         'status': ['exact'],
     }
