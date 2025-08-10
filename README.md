@@ -6,15 +6,15 @@ Welcome to the Employee Management System — a simple yet powerful Django app t
 ## ✨ Key Features
 - **Employee & Department Management**  
 - **Attendance & Performance Tracking**  
-- 🔒 **JWT Token Authentication**  
-- 📊 **Interactive Data Visualization**  
-- 🧪 **Fully Tested APIs** (Employees, Departments, Attendance, Performance)
-- 🌱 **Database Seeding** for quick setup
-- 📚 **Built-in Swagger UI** for API documentation
+- **JWT Token Authentication**  
+- **Interactive Data Visualization**  
+- **Fully Tested APIs** (Employees, Departments, Attendance, Performance)
+- **Database Seeding** for quick setup
+- **Built-in Swagger UI** for API documentation
 
 ---
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone & Setup Environment
 ```bash
@@ -45,7 +45,7 @@ Start the server:
 python manage.py runserver
 ```
 
-🌐 Accessing the Website & APIs
+Accessing the Website & APIs
 Visit homepage or frontend at:
 ```
 http://127.0.0.1:8000/
@@ -66,14 +66,14 @@ Charts page (if enabled):
 http://127.0.0.1:8000/charts/
 ```
 
-## 🔐 Authentication
+## Authentication
 
 ### JWT Token Authentication
 The API uses JWT (JSON Web Token) authentication for secure access. 
 
 **Key Notes:**
-- 🔑 Tokens have expiration time for security
-- ❌ If you see _"Authentication credentials were not provided"_:
+- Tokens have expiration time for security
+- If you see _"Authentication credentials were not provided"_:
   1. Your token has expired
   2. You need to re-authenticate
 - 🔄 Get new tokens at: `http://localhost:8000/api/token/`
@@ -82,12 +82,12 @@ The API uses JWT (JSON Web Token) authentication for secure access.
 1. Visit `/swagger/`
 2. Click **"Authorize"** button
 3. Enter your token:  
-   `Bearer <your_token_here>`
+   `Bearer <your_token>`
 4. All API requests will now include your token automatically
 
 ## Swagger Authentication
 
-## 🧪 Testing the System
+## Testing the System
 
 ### 1. Using Swagger UI
 - Interactive API documentation at `/swagger/`
