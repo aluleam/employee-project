@@ -1,9 +1,5 @@
 # 🏢 Employee Management System - Django Internship Project
 
-[![Django](https://img.shields.io/badge/Django-4.2-brightgreen.svg)](https://www.djangoproject.com/)
-[![DRF](https://img.shields.io/badge/DRF-3.14-blue.svg)](https://www.django-rest-framework.org/)
-[![JWT](https://img.shields.io/badge/JWT-Auth-orange.svg)](https://jwt.io/)
-
 
 Welcome to the Employee Management System — a simple yet powerful Django app that helps you keep track of your team, their departments, attendance, and performance. It comes with easy-to-use APIs and handy charts to give you quick insights, all built to make HR tasks less of a headache.
 
