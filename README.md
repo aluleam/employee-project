@@ -1,121 +1,110 @@
-# Employee Management System
+Employee Management System - Django Internship Project
+Welcome to the Employee Management System — a Django web app to manage employees, departments, attendance, and performance with easy-to-use APIs and interactive charts.
 
-A Django-based Employee Management System with REST APIs, JWT authentication, and data visualization.  
-Manage departments, employees, attendance, and performance efficiently through a clean web interface.
+🔥 What This Website Does
+Manage employees, departments, attendance records, and performance reviews.
 
----
+Secure access with token-based login (JWT).
 
-## Features
+Explore and test APIs via built-in Swagger UI.
 
-- Full CRUD APIs for Departments, Employees, Attendance, and Performance  
-- Secure JWT-based authentication for API access  
-- Responsive login page styled with Tailwind CSS and widget tweaks  
-- Interactive charts showing employee distribution per department using Chart.js  
-- Swagger & ReDoc auto-generated API documentation for easy exploration  
-- Easily extendable for future enhancements
+Visualize employee data with charts (e.g., employees per department).
 
----
+Seed your database with fake data to get started quickly.
 
-## Prerequisites
+Fully tested APIs with unit tests covering employees, departments, attendance, and performance.
 
-- Python 3.10 or higher  
-- pip (Python package installer)  
-- Virtual environment tool (`venv` or `virtualenv`)  
-- PostgreSQL (optional, for production use; SQLite is used by default)
-
----
-
-## Getting Started: Local Development Setup
-
-Follow these steps to set up and run the project on your local machine.
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/aluleam/employee-project-internship.git
+⚙️ How to Run It Locally
+Clone & Setup:
+bash
+Copy code
+git clone <your-repo-url>
 cd employee-project-internship
-
-2. Create and activate a virtual environment
-
-bash
-Copy code
 python3 -m venv venv
-source venv/bin/activate    
-3. Install required Python packages
+source venv/bin/activate
+pip install -r requirements.txt
+Heads up:
+If you get warnings about pkg_resources or package install errors, run:
+
 bash
 Copy code
-pip install -r requirements.txt
-4. Configure environment variables
-Create a .env file in the project root and add the following adjust values as needed:
+pip install --upgrade setuptools
+Configure environment variables:
+Copy .env.example to .env and fill in your database and secret keys.
 
-ini
-Copy code
-SECRET_KEY=your-django-secret-key
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-
-5. Apply database migrations
+Run migrations & seed data:
 bash
 Copy code
 python manage.py migrate
-6. Create an admin/superuser account
-bash
-Copy code
-python manage.py createsuperuser
-7. Run the development server
+python manage.py seed_data
+Start the server:
 bash
 Copy code
 python manage.py runserver
-8. Access the app
-Login page: http://127.0.0.1:8000/accounts/login/
+🌐 Accessing the Website & APIs
+Visit homepage or frontend at:
+http://127.0.0.1:8000/
 
-API endpoints: http://127.0.0.1:8000/api/
+API Root (JSON responses):
+http://127.0.0.1:8000/api/
 
-Swagger API docs: http://127.0.0.1:8000/swagger/
+Swagger UI for API docs & testing:
+http://127.0.0.1:8000/swagger/
 
-Charts page: http://127.0.0.1:8000/charts/
+Charts page (if enabled):
+http://127.0.0.1:8000/charts/
 
-Using the API
-Authentication
-Obtain JWT token by sending a POST request with your username and password to:
+🔐 Authentication Notes
+The API requires JWT token authentication.
+
+Tokens expire; if you get “Authentication credentials were not provided” errors, log in again for a new token.
+
+Use Swagger UI’s Authorize button to enter your token for easy API testing.
+
+📋 How to Test Everything
+Use Swagger UI for interactive API testing.
+
+Use curl or Postman with your Bearer token to test endpoints:
 
 bash
 Copy code
-POST /api/token/
-Example JSON payload:
+curl -H "Authorization: Bearer <your-token>" http://127.0.0.1:8000/api/employees/
+Supported APIs include CRUD operations for:
 
-json
+Employees
+
+Departments
+
+Attendance
+
+Performance
+
+Filtering and pagination are supported via query parameters.
+
+🧪 Unit Testing
+Unit tests cover models and APIs for Employees, Departments, Attendance, and Performance.
+
+Run tests locally with:
+
+bash
 Copy code
-{
-  "username": "your_username",
-  "password": "your_password"
-}
-Use the returned access token in the header of subsequent requests:
+python manage.py test employees
+python manage.py test attendance
+Tests check authentication, list/retrieve, create, update, partial update, and delete endpoints.
 
-makefile
+⚠️ Common Gotchas & Troubleshooting
+Token expired? Re-authenticate to get a new JWT token.
+
+Package warnings/errors? Upgrade setuptools:
+
+bash
 Copy code
-Authorization: Bearer access_token
-Refresh tokens via:
+pip install --upgrade setuptools
+Database issues? Ensure PostgreSQL is running and .env config is correct.
 
-swift
-Copy code
-POST /api/token/refresh/
-Example endpoints
-List all departments: GET /api/departments/
+Docker: Docker setup was not finalized — please run locally.
 
-List employees: GET /api/employees/
+🧰 Handy Management Commands
+python manage.py seed_data — populate the database with dummy data for testing.
 
-View attendance records: GET /api/attendance/
-
-Check performance metrics: GET /api/performance/
-
-All endpoints require JWT authentication except for Swagger docs and login page.
-
-Frontend Overview
-Login page uses Tailwind CSS for styling and widget_tweaks for Django form enhancements
-
-Password toggle and loading spinner included for better UX
-
-Chart.js visualizes employee count per department dynamically using API data
-
-.........continue later!!!
+This web app delivers a fully functional Employee Management System with secure APIs and clear visualizations. Though Docker and deployment are pending, it’s simple to run and test locally. Dive in, explore the APIs, and check out the charts!
