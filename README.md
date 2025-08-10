@@ -22,7 +22,7 @@ Welcome to the Employee Management System — a simple yet powerful Django app t
 
 ### 1. Clone & Setup Environment
 ```bash
-git clone <repository-url>
+git clone <https://github.com/aluleam/employee-project-internship>
 cd employee-project-internship
 
 python3 -m venv venv
