@@ -1,110 +1,129 @@
-Employee Management System - Django Internship Project
-Welcome to the Employee Management System — a Django web app to manage employees, departments, attendance, and performance with easy-to-use APIs and interactive charts.
+# 🏢 Employee Management System - Django Internship Project
 
-🔥 What This Website Does
-Manage employees, departments, attendance records, and performance reviews.
+[![Django](https://img.shields.io/badge/Django-4.2-brightgreen.svg)](https://www.djangoproject.com/)
+[![DRF](https://img.shields.io/badge/DRF-3.14-blue.svg)](https://www.django-rest-framework.org/)
+[![JWT](https://img.shields.io/badge/JWT-Auth-orange.svg)](https://jwt.io/)
 
-Secure access with token-based login (JWT).
 
-Explore and test APIs via built-in Swagger UI.
+Welcome to the Employee Management System — a simple yet powerful Django app that helps you keep track of your team, their departments, attendance, and performance. It comes with easy-to-use APIs and handy charts to give you quick insights, all built to make HR tasks less of a headache.
 
-Visualize employee data with charts (e.g., employees per department).
+## ✨ Key Features
+- **Employee & Department Management**  
+- **Attendance & Performance Tracking**  
+- 🔒 **JWT Token Authentication**  
+- 📊 **Interactive Data Visualization**  
+- 🧪 **Fully Tested APIs** (Employees, Departments, Attendance, Performance)
+- 🌱 **Database Seeding** for quick setup
+- 📚 **Built-in Swagger UI** for API documentation
 
-Seed your database with fake data to get started quickly.
+---
 
-Fully tested APIs with unit tests covering employees, departments, attendance, and performance.
+## 🚀 Installation & Setup
 
-⚙️ How to Run It Locally
-Clone & Setup:
-bash
-Copy code
-git clone <your-repo-url>
+### 1. Clone & Setup Environment
+```bash
+git clone <repository-url>
 cd employee-project-internship
+
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
 Heads up:
-If you get warnings about pkg_resources or package install errors, run:
+If you get warnings about pkg_resources or package install errors, please run:
 
-bash
-Copy code
+```
 pip install --upgrade setuptools
+```
+
 Configure environment variables:
 Copy .env.example to .env and fill in your database and secret keys.
 
 Run migrations & seed data:
-bash
-Copy code
+```
 python manage.py migrate
 python manage.py seed_data
+```
 Start the server:
-bash
-Copy code
+```
 python manage.py runserver
+```
+
 🌐 Accessing the Website & APIs
 Visit homepage or frontend at:
+```
 http://127.0.0.1:8000/
+```
 
 API Root (JSON responses):
+```
 http://127.0.0.1:8000/api/
+```
 
 Swagger UI for API docs & testing:
+```
 http://127.0.0.1:8000/swagger/
+```
 
 Charts page (if enabled):
+```
 http://127.0.0.1:8000/charts/
+```
 
-🔐 Authentication Notes
-The API requires JWT token authentication.
+## 🔐 Authentication
 
-Tokens expire; if you get “Authentication credentials were not provided” errors, log in again for a new token.
+### JWT Token Authentication
+The API uses JWT (JSON Web Token) authentication for secure access. 
 
-Use Swagger UI’s Authorize button to enter your token for easy API testing.
+**Key Notes:**
+- 🔑 Tokens have expiration time for security
+- ❌ If you see _"Authentication credentials were not provided"_:
+  1. Your token has expired
+  2. You need to re-authenticate
+- 🔄 Get new tokens at: `http://localhost:8000/api/token/`
 
-📋 How to Test Everything
-Use Swagger UI for interactive API testing.
+### Using Swagger UI
+1. Visit `/swagger/`
+2. Click **"Authorize"** button
+3. Enter your token:  
+   `Bearer <your_token_here>`
+4. All API requests will now include your token automatically
 
-Use curl or Postman with your Bearer token to test endpoints:
+## Swagger Authentication
 
-bash
-Copy code
-curl -H "Authorization: Bearer <your-token>" http://127.0.0.1:8000/api/employees/
-Supported APIs include CRUD operations for:
+## 🧪 Testing the System
 
-Employees
+### 1. Using Swagger UI
+- Interactive API documentation at `/swagger/`
+- Test endpoints directly in browser
+- Automatic token inclusion after authorization
+- See request/response formats
 
-Departments
+### 2. Using cURL
+```bash
+# Get token
+curl -X POST -H "Content-Type: application/json" \
+-d '{"username":"youruser", "password":"yourpass"}' \
+http://localhost:8000/api/token/
 
-Attendance
+# List employees
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+http://localhost:8000/api/employees/
 
-Performance
+# Filter by department
+curl -H "Authorization: Bearer your_token" \
+"http://localhost:8000/api/employees/?department=HR"
 
-Filtering and pagination are supported via query parameters.
+# Create new employee
+curl -X POST -H "Authorization: Bearer your_token" \
+-H "Content-Type: application/json" \
+-d '{"name": "John Doe", "department": 1, "position": "Developer"}' \
+http://localhost:8000/api/employees/
 
-🧪 Unit Testing
-Unit tests cover models and APIs for Employees, Departments, Attendance, and Performance.
+```
 
-Run tests locally with:
+This web app delivers a fully functional Employee Management System with secure APIs and clear visualizations.
+Though Docker and deployment are pending, it’s simple to run and test locally.
+Dive in, explore the APIs, and check out the charts!
 
-bash
-Copy code
-python manage.py test employees
-python manage.py test attendance
-Tests check authentication, list/retrieve, create, update, partial update, and delete endpoints.
-
-⚠️ Common Gotchas & Troubleshooting
-Token expired? Re-authenticate to get a new JWT token.
-
-Package warnings/errors? Upgrade setuptools:
-
-bash
-Copy code
-pip install --upgrade setuptools
-Database issues? Ensure PostgreSQL is running and .env config is correct.
-
-Docker: Docker setup was not finalized — please run locally.
-
-🧰 Handy Management Commands
-python manage.py seed_data — populate the database with dummy data for testing.
-
-This web app delivers a fully functional Employee Management System with secure APIs and clear visualizations. Though Docker and deployment are pending, it’s simple to run and test locally. Dive in, explore the APIs, and check out the charts!
+Thank you!
